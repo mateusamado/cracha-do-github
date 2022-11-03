@@ -1,8 +1,34 @@
 import 'package:flutter/material.dart';
 import '../main.dart';
 
-class PaginaBusca extends StatelessWidget {
+class PaginaBusca extends StatefulWidget {
   const PaginaBusca({super.key});
+
+  @override
+  State<PaginaBusca> createState() => _PaginaBuscaState();
+}
+
+class _PaginaBuscaState extends State<PaginaBusca> {
+  final userController = TextEditingController();
+  void submit() {
+    if (userController.text == '') {
+      showDialog<String>(
+        context: context,
+        builder: (BuildContext context) => AlertDialog(
+          title: const Text('Erro:'),
+          content: const Text('Insira um nome antes de pesquisar!'),
+          actions: <Widget>[
+            TextButton(
+              onPressed: () => Navigator.pop(context, 'OK'),
+              child: const Text('OK'),
+            ),
+          ],
+        ),
+      );
+    } else {
+      Navigator.pushNamed(context, '/cracha');
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -10,9 +36,6 @@ class PaginaBusca extends StatelessWidget {
         child: MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        appBar: AppBar(
-          title: Text('Pagina busca'),
-        ),
         body: Center(
           child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
             Container(
@@ -65,10 +88,12 @@ class PaginaBusca extends StatelessWidget {
                       ),
                       child: Padding(
                         padding: const EdgeInsets.only(left: 15.0),
-                        child: TextField(
+                        child: TextFormField(
+                          autovalidateMode: AutovalidateMode.onUserInteraction,
+                          controller: userController,
                           decoration: InputDecoration(
                             border: InputBorder.none,
-                            hintText: 'Digite seu usuário GitHub',
+                            hintText: 'Digite o usuário GitHub',
                           ),
                         ),
                       )),
@@ -88,7 +113,7 @@ class PaginaBusca extends StatelessWidget {
                           TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
                     ),
                     onPressed: () {
-                      Navigator.pushNamed(context, '/cracha');
+                      submit();
                     },
                   ),
                 ),
