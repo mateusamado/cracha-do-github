@@ -1,14 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import '../main.dart';
-import '../components/cracha.dart';
+import '../../main.dart';
+import '../../components/cracha.dart';
 
-class PaginaCracha extends StatelessWidget {
-  const PaginaCracha({super.key});
+class MyWidget extends StatefulWidget {
+  const MyWidget({super.key});
 
   @override
+  State<MyWidget> createState() => _MyWidgetState();
+}
+
+class _MyWidgetState extends State<MyWidget> {
+  @override
   Widget build(BuildContext context) {
-    SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
     return Container(
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
