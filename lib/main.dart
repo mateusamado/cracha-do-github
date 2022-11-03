@@ -1,8 +1,14 @@
+import 'package:cracha/bloc/profile_bloc.dart';
+import 'package:cracha/data/DataRepository.dart';
 import 'package:flutter/material.dart';
-import 'screens/paginabusca.dart';
-import 'screens/paginacracha.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'screens/widgets/paginabusca.dart';
+import 'screens/widgets/paginacracha.dart';
+import 'screens/GitProfile.dart';
 
-void main() => runApp(const MyApp());
+void main() {
+  runApp(MyApp());
+}
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -11,10 +17,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       initialRoute: '/busca',
-      routes: {
-        '/busca': (context) => PaginaBusca(),
-        '/cracha': (context) => PaginaCracha(),
-      },
+      home: BlocProvider(
+        create: (context) => ProfileBloc(DataRepository()),
+        child: GitProfile(),
+      ),
     );
   }
 }
