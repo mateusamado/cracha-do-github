@@ -1,82 +1,79 @@
 import 'package:flutter/material.dart';
 
-class Cracha extends StatelessWidget {
+class Cracha extends StatefulWidget {
   const Cracha({super.key});
 
   @override
+  State<Cracha> createState() => _CrachaState();
+}
+
+class _CrachaState extends State<Cracha> {
+  @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
+    return Container(
+      width: 350,
+      height: 550,
+      child: Stack(
         children: [
-          SizedBox(
-            height: MediaQuery.of(context).size.height / 16,
-          ),
-          Container(
-            alignment: Alignment.center,
-            height: MediaQuery.of(context).size.height / 1.418918918918919,
-            width: MediaQuery.of(context).size.height / 2,
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(10),
+          Column(children: [
+            Container(
+              height: 150,
+              decoration: BoxDecoration(
+                  color: Color.fromRGBO(80, 43, 147, 1),
+                  borderRadius:
+                      BorderRadius.vertical(top: Radius.circular(20))),
             ),
-            child: Container(
-              child: Padding(
-                padding: const EdgeInsets.only(top: 25),
-                child: Column(
-                  children: [
-                    FlutterLogo(size: 100),
-                    Padding(
-                      padding: const EdgeInsets.all(20),
-                      child: Text(
-                        "3 TEA CUPS",
-                        style: TextStyle(
-                            fontSize: 14, fontWeight: FontWeight.bold),
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(10),
-                      child: Container(
-                        width: MediaQuery.of(context).size.width / 1.5,
-                        child: Text(
-                          "Texto explicativo sobre o contéudo",
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            fontSize: 14,
-                          ),
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 20, right: 20),
-                      child: Container(
-                        child: Divider(color: Colors.red),
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 15),
-                      child: Container(
-                        width: MediaQuery.of(context).size.width / 1.5,
-                        child: Text(
-                          "Texto explicativo",
-                          textAlign: TextAlign.center,
-                          style: TextStyle(fontSize: 14, color: Colors.grey),
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 10),
-                      child: Container(
-                        width: MediaQuery.of(context).size.width / 1.5,
-                        child: Text(
-                          "Texto explicativo",
-                          textAlign: TextAlign.center,
-                          style: TextStyle(fontSize: 14, color: Colors.black),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
+            Container(
+              width: 350,
+              height: 400,
+              decoration: BoxDecoration(
+                  color: Color.fromRGBO(238, 237, 245, 1),
+                  border: Border.all(
+                      color: Color.fromRGBO(80, 43, 147, 1), width: 2),
+                  borderRadius:
+                      BorderRadius.vertical(bottom: Radius.circular(20))),
+              child: Column(
+                children: [
+                  SizedBox(height: 100),
+                  Text(
+                    'Joaovitormoitinho',
+                    style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
+                  ),
+                  SizedBox(
+                    height: 5,
+                  ),
+                  Text(
+                    '12412536523',
+                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Text('João Vitor Dutra Moitinho',
+                      style:
+                          TextStyle(fontSize: 18, fontWeight: FontWeight.w500))
+                ],
+              ),
+            ),
+          ]),
+          Container(
+            width: 180,
+            height: 180,
+            margin: EdgeInsets.only(left: 85, top: 50),
+            decoration: BoxDecoration(
+                color: Colors.blue,
+                borderRadius: BorderRadius.circular(100),
+                boxShadow: [
+                  BoxShadow(
+                      color: Color.fromARGB(115, 0, 0, 0),
+                      offset: const Offset(4, 4),
+                      blurRadius: 3,
+                      spreadRadius: 1)
+                ]),
+            child: CircleAvatar(
+              radius: 100,
+              backgroundImage: NetworkImage(
+                'https://st.depositphotos.com/1020341/4233/i/450/depositphotos_42333899-stock-photo-portrait-of-huge-beautiful-male.jpg',
               ),
             ),
           ),

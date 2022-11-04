@@ -3,14 +3,14 @@ import 'package:flutter/services.dart';
 import '../../main.dart';
 import '../../components/cracha.dart';
 
-class MyWidget extends StatefulWidget {
-  const MyWidget({super.key});
+class PaginaCracha extends StatefulWidget {
+  const PaginaCracha({super.key});
 
   @override
-  State<MyWidget> createState() => _MyWidgetState();
+  State<PaginaCracha> createState() => _PaginaCrachaState();
 }
 
-class _MyWidgetState extends State<MyWidget> {
+class _PaginaCrachaState extends State<PaginaCracha> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -29,6 +29,8 @@ class _MyWidgetState extends State<MyWidget> {
                   );
                 },
               ),
+              backgroundColor: Color.fromRGBO(80, 43, 147, 1),
+              centerTitle: true,
               title: Text('Crachá Github'),
               actions: <Widget>[
                 IconButton(
@@ -38,7 +40,7 @@ class _MyWidgetState extends State<MyWidget> {
               ]),
           body: Stack(
             children: [
-              Cracha(),
+              Center(child: Cracha()),
             ],
           ),
         ),
