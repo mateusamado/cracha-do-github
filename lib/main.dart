@@ -16,11 +16,15 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      initialRoute: '/busca',
-      home: BlocProvider(
-        create: (context) => ProfileBloc(DataRepository()),
-        child: GitProfile(),
+      title: 'Flutter Demo',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+        visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
+      home: GitProfile(),
+      routes: {
+        '/cracha': (context) => PaginaCracha(),
+      },
     );
   }
 }

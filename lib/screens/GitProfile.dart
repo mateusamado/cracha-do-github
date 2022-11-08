@@ -10,11 +10,11 @@ class GitProfile extends StatefulWidget {
 class _GitProfileState extends State<GitProfile> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return Scaffold(body: paginaBusca());
   }
 
-  Widget buildInitialTextField() {
-    return Center();
+  Widget paginaBusca() {
+    return Center(child: PaginaCracha());
   }
 
   Widget buildLoadingState() {
