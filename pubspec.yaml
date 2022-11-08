@@ -38,6 +38,7 @@ dependencies:
   flutter_bloc:
   http:
   get:
+  qr_flutter: 
 
 dev_dependencies:
   flutter_test:

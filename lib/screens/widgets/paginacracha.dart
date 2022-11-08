@@ -1,3 +1,4 @@
+import 'package:cracha/screens/widgets/paginabusca.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import '../../main.dart';
@@ -23,7 +24,9 @@ class _PaginaCrachaState extends State<PaginaCracha> {
                   return IconButton(
                     icon: const Icon(Icons.navigate_before),
                     onPressed: () {
-                      Navigator.pop(context);
+                      Navigator.push(
+                        context, MaterialPageRoute(builder: (context) => const PaginaBusca()),
+                      );
                     },
                     tooltip: MaterialLocalizations.of(ctt).openAppDrawerTooltip,
                   );

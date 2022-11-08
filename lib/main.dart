@@ -23,6 +23,7 @@ class MyApp extends StatelessWidget {
       ),
       home: GitProfile(),
       routes: {
+        '/busca' :(context) => PaginaBusca(),
         '/cracha': (context) => PaginaCracha(),
       },
     );

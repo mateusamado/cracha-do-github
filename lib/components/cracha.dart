@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:qr_flutter/qr_flutter.dart';
 
 class Cracha extends StatefulWidget {
   const Cracha({super.key});
@@ -8,6 +9,9 @@ class Cracha extends StatefulWidget {
 }
 
 class _CrachaState extends State<Cracha> {
+
+  final String data = "123456321312";
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -34,24 +38,32 @@ class _CrachaState extends State<Cracha> {
                       BorderRadius.vertical(bottom: Radius.circular(20))),
               child: Column(
                 children: [
-                  SizedBox(height: 100),
+                  SizedBox(height: 90),
                   Text(
                     'Joaovitormoitinho',
                     style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
                   ),
-                  SizedBox(
-                    height: 5,
-                  ),
+                  
                   Text(
-                    '12412536523',
+                    'ID: #12412536523',
                     style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
                   ),
                   SizedBox(
+                    height: 15,
+                  ),
+                  Text('Nome: João Vitor Dutra Moitinho',
+                      style:
+                          TextStyle(fontSize: 18, fontWeight: FontWeight.w500)),
+                  SizedBox(
                     height: 10,
                   ),
-                  Text('João Vitor Dutra Moitinho',
-                      style:
-                          TextStyle(fontSize: 18, fontWeight: FontWeight.w500))
+                  Text("Código gerado com o texto: $data"),
+
+                  QrImage(
+                    data: data,
+                    size: 150,
+                    
+                  )
                 ],
               ),
             ),
