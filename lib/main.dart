@@ -1,20 +1,25 @@
+import './providers/user_provider.dart';
 import 'package:flutter/material.dart';
-import 'screens/paginabusca.dart';
-import 'screens/paginacracha.dart';
+import 'screen/pagina_busca.dart';
+import 'package:provider/provider.dart';
 
-void main() => runApp(const MyApp());
+void main() {
+  runApp(MyApp());
+}
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      initialRoute: '/busca',
-      routes: {
-        '/busca': (context) => PaginaBusca(),
-        '/cracha': (context) => PaginaCracha(),
-      },
+    return ChangeNotifierProvider.value(
+      value: UserProvider(),
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'Flutter Demo',
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+        ),
+        home: PaginaBusca(),
+      ),
     );
   }
 }
