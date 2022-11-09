@@ -1,30 +1,25 @@
-import 'package:cracha/bloc/profile_bloc.dart';
-import 'package:cracha/data/DataRepository.dart';
+import 'package:cracha_github/providers/user_provider.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'screens/widgets/paginabusca.dart';
-import 'screens/widgets/paginacracha.dart';
-import 'screens/GitProfile.dart';
+import 'screen/pagina_busca.dart';
+import 'package:provider/provider.dart';
 
 void main() {
   runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
+    return ChangeNotifierProvider.value(
+      value: UserProvider(),
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'Flutter Demo',
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+        ),
+        home: PaginaBusca(),
       ),
-      home: GitProfile(),
-      routes: {
-        '/cracha': (context) => PaginaCracha(),
-      },
     );
   }
 }
