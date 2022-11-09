@@ -7,6 +7,7 @@ import 'package:qr_flutter/qr_flutter.dart';
 import 'package:screenshot/screenshot.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:path_provider/path_provider.dart';
+import 'dart:io';
 
 class PaginaCracha extends StatefulWidget {
   final String username;
@@ -50,6 +51,13 @@ class _PaginaCrachaState extends State<PaginaCracha> {
           backgroundColor: Color.fromRGBO(80, 43, 147, 1),
           centerTitle: true,
           elevation: 0,
+          actions: <Widget>[
+            IconButton(
+              onPressed: _takeScreenshot, 
+              icon: const Icon(Icons.download),
+              color: Colors.white,
+            ),
+          ]
         ),
         body: _isLoading
             ? Center(
@@ -57,8 +65,6 @@ class _PaginaCrachaState extends State<PaginaCracha> {
               )
             : Screenshot(
               controller: screenshotController,
-
-
               child: Center(
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -71,22 +77,15 @@ class _PaginaCrachaState extends State<PaginaCracha> {
                             borderRadius:
                                 BorderRadius.vertical(top: Radius.circular(20))),
                         child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            SizedBox(width: 100),
                             Text(
                               'Crachá Virtual',
                               style: TextStyle(
                                   color: Colors.white,
                                   fontSize: 20,
                                   fontWeight: FontWeight.w500),
-                            ),
-                            SizedBox(width: 30),
-                            IconButton(
-                              onPressed: () {},
-                              icon: const Icon(Icons.download),
-                              color: Colors.white,
-                            ),
+                            ),          
                           ],
                         ),
                       ),
@@ -159,11 +158,11 @@ class _PaginaCrachaState extends State<PaginaCracha> {
                 ),
             ));
   }
-  // void _takeScreenshot() async {
-  //   final uint8List = await screenshotController.capture();
-  //   String tempPath = (await getTemporaryDirectory()).path;
-  //   File file = File('$tempPath/image.png');
-  //   await file.writeAsBytes(uint8List!);
-  //   await Share.shareFiles([file.path]);
-  // }
+  void _takeScreenshot() async {
+    final uint8List = await screenshotController.capture();
+    String tempPath = (await getTemporaryDirectory()).path;
+    File file = File('$tempPath/image.png');
+    await file.writeAsBytes(uint8List!);
+    await Share.shareFiles([file.path]);
+  }
 }
